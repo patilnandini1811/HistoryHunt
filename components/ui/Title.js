@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 40,
     paddingBottom: 25,
+    color:'#9435eb',
   }
 })
 

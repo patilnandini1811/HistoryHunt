@@ -21,7 +21,7 @@ import HuntContextProvider, { HuntContext } from "./store/HuntContext";
 import { FriendsContextProvider } from "./store/FriendsContext";
 
 const Stack = createNativeStackNavigator();
-//SplashScreen.preventAutoHideAsync();
+
 
 const AuthStack = () => {
   return (
@@ -38,7 +38,7 @@ const AuthenticatedStack = () => {
       try {
         await initializeDBAsync();
         await initializeImagesDBAsync();
-        //await SplashScreen.hideAsync();
+        
       } catch (error) {
         console.error("app", error);
       }

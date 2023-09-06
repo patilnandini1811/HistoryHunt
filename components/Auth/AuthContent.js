@@ -51,7 +51,7 @@ const AuthContent = ({ isLogin, onAuthenticate }) => {
   return (
     <View style={styles.page}>
       <Image source={require('../../assets/logo.jpg')} style={styles.logo} />
-      <Title title={isLogin ? "LogIn" : "Sign in"} />
+      <Title title={isLogin ? "LogIn" : "SignIn"} />
       <AuthForm
         isLogin={isLogin}
         onSubmit={submitHandler}
@@ -84,8 +84,11 @@ const styles = StyleSheet.create({
     marginLeft:-9,
   },
   logo: {
-    width: 100, 
-    height: 100,
+    width: 150, 
+    height: 150,
+    borderColor: '#7124d5',
+    borderWidth: 3,
+    borderRadius:10,
   },
   
 

@@ -13,12 +13,13 @@ const Button = ({ children, onPress }) => {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: 'purple',
+    backgroundColor: '#9435EB',
     padding: 10,
     borderRadius: 20,
     borderColor: '#000',
     alignItems: 'center',
-    width: 250,
+    width: 140,
+    marginLeft:90,
     
   },
   text: {
