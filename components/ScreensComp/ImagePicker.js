@@ -9,15 +9,15 @@ const ImagePicker = ({imageHandler}) => {
   const [permission, reqPermission] = Camera.useCameraPermissions();
 
   if (!permission) {
-    // Camera permissions are still loading
+    
     return <View />;
   }
 
   if (!permission.granted) {
-    // Camera permissions are not granted yet
+    
     return (
       <View style={styles.container}>
-        <Text style={{ textAlign: 'center' }}>We need your permission to show the camera</Text>
+        <Text style={{ textAlign: 'center' }}> App need camera permission</Text>
         <Button onPress={reqPermission} title="grant permission" />
       </View>
     );

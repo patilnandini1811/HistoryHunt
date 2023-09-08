@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API_KEY = "AIzaSyAmFwni2OOgPqMo0LZxEVcC6vtqjqsJonY";
-const url = `https://console.firebase.google.com/u/1/project/historyhuntapp-64249/database/historyhuntapp-64249-default-rtdb/data/~2F`;
+const url = `https://historyhuntapp-64249-default-rtdb.europe-west1.firebasedatabase.app/`;
 
 const authenticate = async (mode, email, password) => {
   const res = await axios.post(

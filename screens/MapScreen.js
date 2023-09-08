@@ -9,7 +9,8 @@ const MapScreen = ({ navigation }) => {
 
   const savePickedLocation = useCallback(() => {
     if (!pickedLocation) {
-      Alert.alert("No location selected", "You have to pick a location in order to save");
+      Alert.alert("No location selected",
+        "You have to pick a location in order to save");
       return;
     }
     navigation.navigate("CreateHunt", pickedLocation);

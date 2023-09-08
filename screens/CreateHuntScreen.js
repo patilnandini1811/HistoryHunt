@@ -94,7 +94,7 @@ const CreateHuntScreen = ({ props, navigation }) => {
         <Title title={"Customize"} />
 
         <Input
-          placeholder="3 hours? 2days? you pick"
+          placeholder="3 hours? 2days?"
           value={enteredHuntTime}
           onUpdateValue={(value) =>
             updateCreateInputValueHandler("hunt-time", value)
@@ -107,7 +107,9 @@ const CreateHuntScreen = ({ props, navigation }) => {
           onUpdateValue={(value) =>
             updateCreateInputValueHandler("hunt-name", value)
           }
-          label="What do you want to call your hunt?"
+          labelStyle={styles.label} // Style for the label
+  placeholderStyle={styles.placeholder} // Style for the placeholder
+  label="What do you want to call your hunt?"
         />
         <View style={styles.selectedFriends}>
           {selectedFriends.map((friend, index) => (
@@ -129,29 +131,45 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     justifyConten: "space-between",
+    backgroundColor:'white'
   },
   container: {
     alignItems: "center",
     padding: 20,
+    backgroundColor: "skyblue",
+    borderColor: 'blue',
+    borderWidth: 3,
+    borderRadius: 40, // Adding border radius
+    shadowColor: "black", // Adding shadow color
+    shadowOffset: { width: 0, height: 2 }, // Adding shadow offset
+    shadowOpacity: 0.3, // Adding shadow opacity
+    shadowRadius: 4, // Adding shadow radius
+    elevation: 5, // Adding elevation for Android
+    marginTop: 20,
+    
   },
   selectedFriends: {
-    flexDirection: "row", // This will align children (friend names) horizontally.
-    flexWrap: "wrap", // This will wrap to the next line if there's no space left.
-    alignItems: "center", // Vertically centers the items.
-    justifyContent: "center", // Horizontally centers the items.
+    flexDirection: "row", 
+    flexWrap: "wrap", 
+    alignItems: "center", 
+    justifyContent: "center", 
     padding: 10,
   },
   friendContainer: {
-    margin: 5, // Gives space around each name.
+    margin: 5, 
   },
   text: {
-    color: "#2EFF00",
+    color: "#9c21df",
     fontSize: 30,
+    fontWeight: "bold",
   },
   btnContainer: {
     alignItems: "center",
     marginBottom: 50,
+    marginRight: 70,
+    marginTop:30,
   },
+  
 });
 
 export default CreateHuntScreen;

@@ -41,7 +41,7 @@ const StartScreen = ({ navigation }) => {
           const allPlaces = await getAllPlacesAsync();
           setPlaces(allPlaces);
 
-          /* KAn lägg refresh for image här om vill */
+         
         },
       },
     ]);
@@ -76,7 +76,7 @@ const StartScreen = ({ navigation }) => {
       try {
         const uri = await getImageUriFromDatabase();
         setImages(uri);
-        /* console.log('Image URI fetched:', uri); */
+        
       } catch (error) {
         console.error("Error fetching image URI:", error);
       }
@@ -95,12 +95,10 @@ const StartScreen = ({ navigation }) => {
           <Text style={styles.createHunt}>Create Hunt</Text>
         </Pressable>
 
-        {/*  <Pressable onPress={() => navigation.navigate('AddPlace')}  >
-          <Text style={styles.createHunt}>Create Hunt</Text>
-        </Pressable> */}
+        
       </View>
       <View>
-        <Text style={styles.medals}>MEDALS</Text>
+        <Text style={styles.medals}>Medals</Text>
       </View>
     </View>
   );
@@ -116,18 +114,31 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 8,
     marginTop: 30,
-    color: "pink",
+    color: "#9c21df",
   },
   createHunt: {
     fontSize: 16,
     fontWeight: "bold",
-    padding: 20,
+    padding: 10,
     textAlign: "center",
+     backgroundColor: "#9c21df", 
+    borderRadius: 10, 
+    width: 140, 
+    marginLeft: 90,
+    marginTop: 50,
+    color:'white'
   },
   medals: {
+    fontSize: 16,
+    fontWeight: "bold",
+    padding: 10,
     textAlign: "center",
-    fontSize: 20,
-    color: "blue",
+    backgroundColor: "#9c21df", 
+    borderRadius: 10, 
+    width: 140,
+    marginLeft: 90,
+    marginTop: 50,
+    color:'white'
   },
 });
 

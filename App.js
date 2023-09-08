@@ -19,6 +19,7 @@ import UserContextProvider from "./store/UserContext";
 import { initializeDBAsync, initializeImagesDBAsync } from "./util/database";
 import HuntContextProvider, { HuntContext } from "./store/HuntContext";
 import { FriendsContextProvider } from "./store/FriendsContext";
+import LocationNavigatorScreen from "./screens/LocationNavigatorScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -55,6 +56,7 @@ const AuthenticatedStack = () => {
       <Stack.Screen name="CreateHunt" component={CreateHuntScreen} />
       <Stack.Screen name="InviteFriends" component={InviteFriendsScreen} />
       <Stack.Screen name="ConfirmHunt" component={ConfirmHuntScreen} />
+      <Stack.Screen name="LocationNavigator" component={LocationNavigatorScreen} />
     </Stack.Navigator>
   );
 };
