@@ -17,7 +17,7 @@ const LoginScreen = () => {
      
       const token = await http.signinUser(email, password);
       authCtx.authenticate(token);
-      
+      console.log(http.signinUser);
    
     } catch (error) {
       console.log(JSON.stringify(error))

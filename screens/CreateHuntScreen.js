@@ -18,7 +18,8 @@ import { UserContext } from "../store/UserContext";
 
 const CreateHuntScreen = ({ props, navigation }) => {
   const [enteredHuntTime, setEnteredHuntTime] = useState("");
-  const [enteredHuntName, setEnteredHuntName] = useState("");
+  const [ enteredHuntName, setEnteredHuntName ] = useState("");
+  const [huntCreated, setHuntCreated] = useState(false);
   const [creator, setCreator] = useState("");
   const [location, setLocation] = useState();
   const { addHunt } = useContext(HuntContext);
@@ -65,6 +66,7 @@ const CreateHuntScreen = ({ props, navigation }) => {
       };
 
       addHunt(newHunt);
+      setHuntCreated(true);
       setEnteredHuntTime("");
       setEnteredHuntName("");
       /* After sumbit might navigate to createHunt? */
@@ -107,8 +109,8 @@ const CreateHuntScreen = ({ props, navigation }) => {
           onUpdateValue={(value) =>
             updateCreateInputValueHandler("hunt-name", value)
           }
-          labelStyle={styles.label} // Style for the label
-  placeholderStyle={styles.placeholder} // Style for the placeholder
+          labelStyle={styles.label} 
+  placeholderStyle={styles.placeholder} 
   label="What do you want to call your hunt?"
         />
         <View style={styles.selectedFriends}>
@@ -118,6 +120,9 @@ const CreateHuntScreen = ({ props, navigation }) => {
             </View>
           ))}
         </View>
+        {huntCreated && (
+          <Text style={styles.successMessage}>Hunt Created!</Text>
+        )}
       </View>
       <LocationPicker locationHandler={locationHandler} />
       <View style={styles.btnContainer}>
@@ -139,13 +144,14 @@ const styles = StyleSheet.create({
     backgroundColor: "skyblue",
     borderColor: 'blue',
     borderWidth: 3,
-    borderRadius: 40, // Adding border radius
-    shadowColor: "black", // Adding shadow color
-    shadowOffset: { width: 0, height: 2 }, // Adding shadow offset
-    shadowOpacity: 0.3, // Adding shadow opacity
-    shadowRadius: 4, // Adding shadow radius
-    elevation: 5, // Adding elevation for Android
+    borderRadius: 40, 
+    shadowColor: "black", 
+    shadowOffset: { width: 0, height: 2 }, 
+    shadowOpacity: 0.3, 
+    shadowRadius: 4,
+    elevation: 5, 
     marginTop: 20,
+    
     
   },
   selectedFriends: {
@@ -169,6 +175,16 @@ const styles = StyleSheet.create({
     marginRight: 70,
     marginTop:30,
   },
+  successMessage: {
+  backgroundColor:  "#9c21df", 
+  color: "white", 
+  fontSize: 20,
+  fontWeight: "bold",
+  textAlign: "center",
+  padding: 10, 
+  borderRadius: 8, 
+  marginTop: 20, 
+},
   
 });
 
