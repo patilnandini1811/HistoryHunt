@@ -26,7 +26,9 @@ const CreateHuntScreen = ({ props, navigation }) => {
   const { selectedFriends } = useContext(FriendsContext);
   const userCtx = useContext(UserContext);
 
-  useEffect(() => {
+  useEffect(() =>
+  {
+    
     setCreator(userCtx.currentUser);
   }, [userCtx]);
 

@@ -76,6 +76,7 @@ import { Text, View, Image, StyleSheet } from "react-native";
 import { createLocationUrl } from "../util/location";
 import Button from "../components/ui/Button";
 
+
 const ConfirmHuntScreen = ({ route, navigation }) => {
   const { details } = route.params;
   const huntLocationUrl = createLocationUrl(details.location);
