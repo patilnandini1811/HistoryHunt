@@ -111,28 +111,36 @@ const styles = StyleSheet.create({
     padding: 16,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor:"#d4a6ed"
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 16,
+    color: "white",
+    borderStyle: "solid",
+    borderColor:"black",
+    
   },
   label: {
     fontSize: 18,
     fontWeight: "bold",
     marginVertical: 8,
+    color:"white"
   },
   info: {
     fontSize: 16,
     marginVertical: 8,
+    color:"white"
   },
   image: {
     width: 400,
-    height: 200,
+    height: 300,
     marginVertical: 8,
   },
   button: {
-    marginTop: 16,
+    marginRight: 40, 
+    marginLeft: 10,
     backgroundColor: "purple",
     borderRadius: 10,
   },

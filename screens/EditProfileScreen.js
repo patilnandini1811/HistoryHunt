@@ -11,7 +11,7 @@ const EditProfileScreen = () => {
   const [image, setImage] = useState();
   const navigation = useNavigation();
 
-/*   console.log("image at EditProfile", image) */
+
 
   const imageHandler = (uri) => {
     setImage(uri);
@@ -20,7 +20,7 @@ const EditProfileScreen = () => {
     console.log('addImageHandler called with:', imageUri);
     try {
       await insertImageAsync({ imageUri: imageUri });
-    /*   console.log('Image inserted successfully'); */
+    
       navigation.navigate("Start");
     } catch (error) {
       console.error('Error inserting image:', error);
@@ -28,7 +28,7 @@ const EditProfileScreen = () => {
   };
 
   const submitHandler = () => {
-   /*  console.log("clicking on save but") */
+   
     addImageHandler(image);
   };
 
