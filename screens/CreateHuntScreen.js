@@ -71,7 +71,7 @@ const CreateHuntScreen = ({ props, navigation }) => {
       setHuntCreated(true);
       setEnteredHuntTime("");
       setEnteredHuntName("");
-      /* After sumbit might navigate to createHunt? */
+      
     } catch (error) {
       console.error("Failed to create the hunt", error);
     }

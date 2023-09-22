@@ -1,5 +1,4 @@
 import axios from "axios";
-
 const API_KEY = "AIzaSyAmFwni2OOgPqMo0LZxEVcC6vtqjqsJonY";
 const url = `https://historyhuntapp-64249-default-rtdb.europe-west1.firebasedatabase.app/`;
 
@@ -32,9 +31,7 @@ export const updateUser = async (displayName, idToken) => {
       returnSecureToken: true,
     }
   );
-
-  /*   console.log('http name', resp.data.localId) */
-  return resp.data.localId;
+return resp.data.localId;
 };
 
 export const getUser = async (idToken) => {
@@ -91,5 +88,32 @@ export const saveHunt = async (hunt) => {
       error.response?.data || error.message
     );
     throw error;
+  }
+};
+
+
+export const completeHunt = async (huntId, userId) => {
+  try {
+    const res = await axios.get(`${url}/hunts/${huntId}.json`);
+    const currentHunt = res.data;
+
+    if (currentHunt.creator && currentHunt.creator.id === userId) {
+      currentHunt.creator.status = "Medal";
+    }
+
+    if (currentHunt.invitees) {
+      currentHunt.invitees = currentHunt.invitees.map((invitee) => {
+        if (invitee.id === userId) {
+          return { ...invitee, status: "Medal" };
+        }
+        return invitee;
+      });
+    } else {
+      currentHunt.invitees = [];
+    }
+
+    await axios.put(`${url}/hunts/${huntId}.json`, currentHunt);
+  } catch (error) {
+    console.error("Failed to complete the hunt", error);
   }
 };
