@@ -11,28 +11,24 @@ import Title from "../components/ui/Title";
 import Input from "../components/ui/Input";
 import Button from "../components/ui/Button";
 import LocationPicker from "../components/places/LocationPicker";
-import OutlinedButton from "../components/ui/OutlinedButton";
 import { FriendsContext } from "../store/FriendsContext";
 import { HuntContext } from "../store/HuntContext";
 import { UserContext } from "../store/UserContext";
+import IconButton from "../components/ui/IconButton";
 
-const CreateHuntScreen = ({ props, navigation }) => {
+const CreateHuntScreen = ({ navigation }) => {
   const [enteredHuntTime, setEnteredHuntTime] = useState("");
-  const [ enteredHuntName, setEnteredHuntName ] = useState("");
-  const [huntCreated, setHuntCreated] = useState(false);
+  const [enteredHuntName, setEnteredHuntName] = useState("");
   const [creator, setCreator] = useState("");
   const [location, setLocation] = useState();
   const { addHunt } = useContext(HuntContext);
   const { selectedFriends } = useContext(FriendsContext);
   const userCtx = useContext(UserContext);
 
-  useEffect(() =>
-  {
-    
+  useEffect(() => {
     setCreator(userCtx.currentUser);
   }, [userCtx]);
 
-  //console.log("creator", creator);
   const locationHandler = useCallback((locationInfo) => {
     setLocation(locationInfo);
   }, []);
@@ -50,13 +46,11 @@ const CreateHuntScreen = ({ props, navigation }) => {
 
   const submitHandler = async () => {
     try {
-     
       const updatedCreator = { ...creator, status: "Active" };
 
-     
       const updatedSelectedFriends = selectedFriends.map((friend) => ({
         ...friend,
-        status: "Active",
+        status: "Planned",
       }));
 
       const newHunt = {
@@ -68,10 +62,9 @@ const CreateHuntScreen = ({ props, navigation }) => {
       };
 
       addHunt(newHunt);
-      setHuntCreated(true);
       setEnteredHuntTime("");
       setEnteredHuntName("");
-      
+      navigation.navigate("Start");
     } catch (error) {
       console.error("Failed to create the hunt", error);
     }
@@ -80,14 +73,11 @@ const CreateHuntScreen = ({ props, navigation }) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <OutlinedButton
-          name="person-add"
-          size={24}
-          color="black"
-          pressHandler={() => navigation.navigate("InviteFriends")}
-        >
-          Invite friend
-        </OutlinedButton>
+        <IconButton
+          icon="person-add"
+          size={40}
+          onPress={() => navigation.navigate("InviteFriends")}
+        />
       ),
     });
   }, [navigation]);
@@ -98,7 +88,7 @@ const CreateHuntScreen = ({ props, navigation }) => {
         <Title title={"Customize"} />
 
         <Input
-          placeholder="3 hours? 2days?"
+          placeholder="1 hours? 3days? you pick"
           value={enteredHuntTime}
           onUpdateValue={(value) =>
             updateCreateInputValueHandler("hunt-time", value)
@@ -111,20 +101,8 @@ const CreateHuntScreen = ({ props, navigation }) => {
           onUpdateValue={(value) =>
             updateCreateInputValueHandler("hunt-name", value)
           }
-          labelStyle={styles.label} 
-  placeholderStyle={styles.placeholder} 
-  label="What do you want to call your hunt?"
+          label="What do you want to call hunt?"
         />
-        <View style={styles.selectedFriends}>
-          {selectedFriends.map((friend, index) => (
-            <View key={index} style={styles.friendContainer}>
-              <Text style={styles.text}>{friend.name}</Text>
-            </View>
-          ))}
-        </View>
-        {huntCreated && (
-          <Text style={styles.successMessage}>Hunt Created!</Text>
-        )}
       </View>
       <LocationPicker locationHandler={locationHandler} />
       <View style={styles.btnContainer}>
@@ -133,7 +111,6 @@ const CreateHuntScreen = ({ props, navigation }) => {
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,

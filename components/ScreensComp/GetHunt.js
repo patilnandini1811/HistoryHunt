@@ -1,10 +1,13 @@
+
+
 import { View, Text, FlatList, StyleSheet, Pressable } from "react-native";
 import { useState, useEffect, useContext } from "react";
-import { useNavigation } from "@react-navigation/native";
-
 import { UserContext } from "../../store/UserContext";
 import { HuntContext } from "../../store/HuntContext";
 import { Colors } from "../../constants/Colors";
+import { useNavigation } from "@react-navigation/native";
+
+
 
 const GetHunt = () => {
   const [activeHunts, setActiveHunts] = useState([]);
@@ -118,7 +121,7 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   complete: {
-    color: Colors.green,
+    color: 'green',
     fontWeight: "bold",
   },
 });
