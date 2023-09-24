@@ -24,6 +24,8 @@ const CreateHuntScreen = ({ navigation }) => {
   const { addHunt } = useContext(HuntContext);
   const { selectedFriends } = useContext(FriendsContext);
   const userCtx = useContext(UserContext);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
 
   useEffect(() => {
     setCreator(userCtx.currentUser);
@@ -65,6 +67,13 @@ const CreateHuntScreen = ({ navigation }) => {
       setEnteredHuntTime("");
       setEnteredHuntName("");
       navigation.navigate("Start");
+      console.log("Before setting showSuccessMessage to true");
+      setShowSuccessMessage(true);
+      console.log("After setting showSuccessMessage to true");
+      setTimeout(() =>
+      {
+        setShowSuccessMessage(false);
+      }, 5000);
     } catch (error) {
       console.error("Failed to create the hunt", error);
     }
@@ -84,11 +93,17 @@ const CreateHuntScreen = ({ navigation }) => {
 
   return (
     <View style={styles.mainContainer}>
+      
       <View style={styles.container}>
+        {showSuccessMessage && (
+          <View style={styles.successMessageContainer}>
+            <Text style={styles.successMessage}>Hunt created!</Text>
+          </View>)}
+        
         <Title title={"Customize"} />
 
         <Input
-          placeholder="1 hours? 3days? you pick"
+          placeholder="3 hours? 2days? you pick"
           value={enteredHuntTime}
           onUpdateValue={(value) =>
             updateCreateInputValueHandler("hunt-time", value)
@@ -101,16 +116,22 @@ const CreateHuntScreen = ({ navigation }) => {
           onUpdateValue={(value) =>
             updateCreateInputValueHandler("hunt-name", value)
           }
-          label="What do you want to call hunt?"
+          label="What do you want to call your hunt?"
         />
+        
       </View>
       <LocationPicker locationHandler={locationHandler} />
       <View style={styles.btnContainer}>
-        <Button onPress={submitHandler}> Create Hunt </Button>
+        {showSuccessMessage ? (
+          <Text style={styles.successMessage}>Hunt created!</Text>
+        ) : (
+          <Button onPress={submitHandler}> Create Hunt </Button>
+        )}
       </View>
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
@@ -154,16 +175,23 @@ const styles = StyleSheet.create({
     marginRight: 70,
     marginTop:30,
   },
-  successMessage: {
-  backgroundColor:  "#9c21df", 
-  color: "white", 
-  fontSize: 20,
-  fontWeight: "bold",
-  textAlign: "center",
-  padding: 10, 
-  borderRadius: 8, 
-  marginTop: 20, 
+  successMessageContainer: {
+    position: 'absolute', 
+    top: '50%', 
+    left: '50%', 
+    transform: [{translateX: '-50%'}, {translateY: '-50%'}], // Add this
+    zIndex: 10, 
+    backgroundColor: 'rgba(0,0,0,0.8)',
+    padding: 10,
+    borderRadius: 8,
 },
+
+  successMessage: {
+    color: 'black',
+    fontSize: 16,
+    textAlign: 'center',
+  },
+  
   
 });
 

@@ -54,7 +54,7 @@ const ImagePicker = ({imageHandler}) => {
         <IconButton
           icon="camera-alt"
           size={32}
-          color="white"
+          color="orange"
           onPress={takePicture}
         />
       </Camera>
@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
     height: height / 2.5,
     alignItems: "center",/* få den i center*/
     justifyContent: "flex-end", /* Få camera att vara längds ner */
+    
   },
   preview: {
     width: width,
@@ -90,6 +91,7 @@ const styles = StyleSheet.create({
   photo: {
     width: "100%",
     height: "100%",
+    borderRadius: 10, 
   }
 
 });
