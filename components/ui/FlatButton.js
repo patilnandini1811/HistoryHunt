@@ -12,7 +12,7 @@ const FlatButton = ({ children, onPress }) => {
   );
 };
 const styles = StyleSheet.create({
-  /* Add more styling to the button text */
+  
   buttonText: {
     color: "blue"
   }

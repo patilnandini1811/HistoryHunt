@@ -4,7 +4,7 @@ import { View, Text, FlatList, StyleSheet, Pressable } from "react-native";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../store/UserContext";
 import { HuntContext } from "../../store/HuntContext";
-import { Colors } from "../../constants/Colors";
+
 import { useNavigation } from "@react-navigation/native";
 
 

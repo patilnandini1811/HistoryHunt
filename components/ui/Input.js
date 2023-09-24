@@ -1,7 +1,5 @@
 import { Text, View, TextInput, StyleSheet } from "react-native"
 
-
-
 const Input = ({ label, onUpdateValue, placeholder }) => {
   return (
     <View>

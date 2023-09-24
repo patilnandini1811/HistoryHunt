@@ -13,7 +13,7 @@ const LocationNavigatorScreen = ({ route }) =>
 {
   const navigation = useNavigation();
   const { details } = route.params;
-  console.log("check", details);
+  // console.log("check", details);
   const [userLocation, setUserLocation] = useState(null);
   const [selectedDestination, setSelectedDestination] = useState(null);
   const [ routeCoordinates, setRouteCoordinates ] = useState([]);

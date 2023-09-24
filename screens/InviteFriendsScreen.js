@@ -55,25 +55,26 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   selectedFriends: {
-    flexDirection: "row", // This will align children (friend names) horizontally.
-    flexWrap: "wrap", // This will wrap to the next line if there's no space left.
-    alignItems: "center", // Vertically centers the items.
-    justifyContent: "center", // Horizontally centers the items.
+    flexDirection: "row", 
+    flexWrap: "wrap", 
+    alignItems: "center", 
+    justifyContent: "center", 
     padding: 20,
     marginBottom: 12,
   },
   friendContainer: {
-    margin: 5, // Gives space around each name.
+    margin: 5, 
   },
   text: {
-    color: "#2EFF00",
+    color: "#73f83a",
     fontSize: 30,
   },
 
   btnContainer: {
-    padding: 190,
+    padding: 20,
     alignItems: "center",
-  },
+},
+
 });
 
 export default InviteFriendsScreen;

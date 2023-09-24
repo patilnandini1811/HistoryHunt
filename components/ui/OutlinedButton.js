@@ -1,4 +1,4 @@
-import { View, Pressable, Text, StyleSheet } from "react-native";
+import { Pressable, Text, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 const OutlinedButton = ({ pressHandler, icon, children }) => {
@@ -20,7 +20,8 @@ const styles = StyleSheet.create({
     borderColor: "blue",         
   },
   buttonText: {
-    marginLeft: 10,            
+    marginLeft: 10,    
+    color:'black'
   }
 });
 

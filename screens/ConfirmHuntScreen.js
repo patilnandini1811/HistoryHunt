@@ -1,76 +1,4 @@
-// import { Text, View, Image } from "react-native";
 
-// import { createLocationUrl } from "../util/location";
-// import Button from "../components/ui/Button";
-
-// const ConfirmHuntScreen = ({ route, navigation }) => {
-//   const { details } = route.params;
-//   const huntLocationUrl = createLocationUrl(details.location);
-
-  
-
-  
-// const continueHandler = async () => {
-//     navigation.navigate("LocationNavigator");
-// };
-//   return (
-//     <View>
-//       <Text>Confirm Hunt</Text>
-//       <Text> You picked:</Text>
-//       <Text>{details.name}</Text>
-//       <Text>Here is the route you will be taking</Text>
-//       <Image
-//         style={{ width: 400, height: 200 }}
-//         source={{ uri: huntLocationUrl }}
-//       />
-
-//       <Text>{details.location.address}</Text>
-
-//       <Text>You should take approximately</Text>
-//       <Text>{details.estimatedTime}</Text>
-//       <Button onPress={continueHandler}>Confirm</Button>
-//     </View>
-//   );
-// };
-// export default ConfirmHuntScreen;
-//======================================================================================================
-// import { Text, View, Image } from "react-native";
-
-// import { createLocationUrl } from "../util/location";
-// import Button from "../components/ui/Button";
-// // import { useEffect, useState } from "react";
-
-// const ConfirmHuntScreen = ({ route, navigation }) => {
-//   const { details } = route.params;
-//   const huntLocationUrl = createLocationUrl(details.location);
-
-//   const continueHandler = async () => {
-//     navigation.navigate("LocationNavigator", { details: details });
-//   };
-
-//   return (
-//     <View>
-//       <Text>Confirm Hunt</Text>
-//       <Text>You picked:</Text>
-//       <Text>{details.name}</Text>
-//       <Text>Here is the route you will be taking</Text>
-//       <Image
-//         style={{ width: 400, height: 200 }}
-//         source={{ uri: huntLocationUrl }}
-//       />
-
-//       <Text>{details.location.address}</Text>
-
-//       <Text>You should take approximately</Text>
-//       <Text>{details.estimatedTime}</Text>
-//       <Button onPress={continueHandler}>Confirm</Button>
-//     </View>
-//   );
-// };
-
-// export default ConfirmHuntScreen;
-//==========================================New Style======================================================
-import React from "react";
 import { Text, View, Image, StyleSheet } from "react-native";
 
 import { createLocationUrl } from "../util/location";
@@ -88,8 +16,10 @@ const ConfirmHuntScreen = ({ route, navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Confirm Hunt</Text>
-      <Text style={styles.label}>You picked:</Text>
-      <Text style={styles.info}>{details.name}</Text>
+      <View style={styles.wrapper}>
+        <Text style={styles.text}>You picked:</Text>
+        <Text style={styles.smallText}>{details.name}</Text>
+      </View>
       <Text style={styles.label}>Here is the route you will be taking</Text>
       <Image
         style={styles.image}
@@ -97,9 +27,10 @@ const ConfirmHuntScreen = ({ route, navigation }) => {
       />
 
       <Text style={styles.label}>{details.location.address}</Text>
-
-      <Text style={styles.label}>You should take approximately</Text>
-      <Text style={styles.info}>{details.estimatedTime}</Text>
+<View style={styles.wrapperBottom}>
+        <Text style={styles.text}>You should take approximately:</Text>
+        <Text style={styles.smallText}>{details.estimatedTime}</Text>
+      </View>
       <Button onPress={continueHandler} style={styles.button}>Confirm</Button>
     </View>
   );
@@ -133,6 +64,15 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     color:"white"
   },
+  wrapper: {
+    flexDirection: "row",
+    padding: 10,
+  },
+  wrapperBottom: {
+    flexDirection: "row",
+    padding: 10,
+    paddingBottom: 40,
+  },
   image: {
     width: 400,
     height: 300,
@@ -144,6 +84,7 @@ const styles = StyleSheet.create({
     backgroundColor: "purple",
     borderRadius: 10,
   },
+  
 });
 
 export default ConfirmHuntScreen;

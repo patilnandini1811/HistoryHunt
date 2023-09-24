@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
-import { Colors } from "../../constants/Colors";
+
 
 const NotificationPopup = ({ isVisible, header, onClose, onConfirm, text, answer }) => {
   if (!isVisible) return null;
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   button: {
-    backgroundColor: Colors.purple,
+    backgroundColor:'purple',
     padding: 10,
     borderRadius: 5,
   },

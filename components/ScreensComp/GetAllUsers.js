@@ -1,3 +1,4 @@
+
 import {
   View,
   Text,
@@ -5,8 +6,8 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import { useState, useEffect, useContext } from "react";
-import * as http from "../../util/http";
+import { useState,useContext } from "react";
+
 
 import { UserContext } from "../../store/UserContext";
 
@@ -63,12 +64,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#f4f4f4",
   },
   container: {
-    width: 100, // Fixed width for square
-    height: 100, // Fixed height for square
-    margin: 10,
+    width: 100, 
+    height: 100, 
     padding: 15,
-    justifyContent: "center", // Center content vertically inside the square
-    alignItems: "center", // Center content horizontally inside the square
+    justifyContent: "center", 
+    alignItems: "center", 
     backgroundColor: "#fff",
     borderRadius: 5,
     shadowColor: "#000",

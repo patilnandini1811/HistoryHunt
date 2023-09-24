@@ -6,8 +6,7 @@ import IconButton from "../components/ui/IconButton";
 import { AuthContext } from "../store/AuthContext";
 import { getImageUriFromDatabase } from "../util/database";
 import ProfileImage from "../components/ScreensComp/ProfileImage";
-// import { Colors } from "../constants/Colors";
-// import AuthName from "../components/Auth/AuthName";
+
 import GetHunt from "../components/ScreensComp/GetHunt";
 
 const StartScreen = ({ navigation }) => {
@@ -46,9 +45,7 @@ const StartScreen = ({ navigation }) => {
           <Text style={styles.createHunt}>Create Hunt</Text>
         </Pressable>
       </View>
-      {/* <View>
-        <Text style={styles.medals}>MEDALS</Text>
-      </View> */}
+      
     </View>
   );
 };
@@ -77,18 +74,7 @@ const styles = StyleSheet.create({
     marginTop: 50,
     color:'white'
   },
-  // medals: {
-  //   fontSize: 16,
-  //   fontWeight: "bold",
-  //   padding: 10,
-  //   textAlign: "center",
-  //   backgroundColor: "#9c21df", 
-  //   borderRadius: 10, 
-  //   width: 140,
-  //   marginLeft: 90,
-  //   marginTop: 50,
-  //   color:'white'
-  // },
+ 
 });
 
 export default StartScreen;

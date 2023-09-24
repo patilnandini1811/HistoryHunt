@@ -29,7 +29,7 @@ const UserContextProvider = ({ children }) => {
       }
     };
     fetchUsers();
-  }, []);
+  }, [currentUser]);
 
   const addUser = (displayName, localId) => {
     setUsers(prevUsers => [...prevUsers, { name: displayName, id: localId }]);

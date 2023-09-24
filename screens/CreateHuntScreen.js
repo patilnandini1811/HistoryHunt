@@ -24,7 +24,7 @@ const CreateHuntScreen = ({ navigation }) => {
   const { addHunt } = useContext(HuntContext);
   const { selectedFriends } = useContext(FriendsContext);
   const userCtx = useContext(UserContext);
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  // const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
 
   useEffect(() => {
@@ -67,13 +67,13 @@ const CreateHuntScreen = ({ navigation }) => {
       setEnteredHuntTime("");
       setEnteredHuntName("");
       navigation.navigate("Start");
-      console.log("Before setting showSuccessMessage to true");
-      setShowSuccessMessage(true);
-      console.log("After setting showSuccessMessage to true");
-      setTimeout(() =>
-      {
-        setShowSuccessMessage(false);
-      }, 5000);
+      
+      // setShowSuccessMessage(true);
+      
+      // setTimeout(() =>
+      // {
+      //   setShowSuccessMessage(false);
+      // }, 5000);
     } catch (error) {
       console.error("Failed to create the hunt", error);
     }
@@ -95,10 +95,10 @@ const CreateHuntScreen = ({ navigation }) => {
     <View style={styles.mainContainer}>
       
       <View style={styles.container}>
-        {showSuccessMessage && (
+        {/* {showSuccessMessage && (
           <View style={styles.successMessageContainer}>
             <Text style={styles.successMessage}>Hunt created!</Text>
-          </View>)}
+          </View>)} */}
         
         <Title title={"Customize"} />
 
@@ -118,15 +118,20 @@ const CreateHuntScreen = ({ navigation }) => {
           }
           label="What do you want to call your hunt?"
         />
-        
+        <View style={styles.selectedFriends}>
+  {selectedFriends.map((friend, index) => (
+    <View key={index} style={styles.friendContainer}>
+      <Text style={styles.text}>{friend.name}</Text>
+    </View>
+  ))}
+</View>
+
       </View>
       <LocationPicker locationHandler={locationHandler} />
       <View style={styles.btnContainer}>
-        {showSuccessMessage ? (
-          <Text style={styles.successMessage}>Hunt created!</Text>
-        ) : (
+        
           <Button onPress={submitHandler}> Create Hunt </Button>
-        )}
+        
       </View>
     </View>
   );

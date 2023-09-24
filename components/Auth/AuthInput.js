@@ -1,6 +1,6 @@
 import { TextInput, StyleSheet } from 'react-native';
 
-import { Colors } from '../../constants/Colors';
+
 
 const AuthInput = ({
   value,
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   textInput: {
     fontSize: 18,
     borderWidth: 3,
-    borderColor: Colors.gray,
+    borderColor: 'gray',
     borderRadius: 55,
     padding: 10,
     margin: 6,
