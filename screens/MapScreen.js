@@ -6,7 +6,7 @@ import { useLayoutEffect, useState, useEffect, useCallback } from "react";
 import * as Location from "expo-location";
 
 import IconButton from "../components/ui/IconButton";
-import OutlinedButton from "../components/ui/OutlinedButton"; // Import your OutlinedButton component
+import OutlinedButton from "../components/ui/OutlinedButton"; 
 
 const MapScreen = ({ navigation }) => {
   const [pickedLocation, setPickedLocation] = useState();

@@ -1,25 +1,24 @@
+
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 import LoginScreen from "./screens/LoginScreen";
 import SignupScreen from "./screens/SignupScreen";
 import StartScreen from "./screens/StartScreen";
-import MapScreen from "./screens/MapScreen";
-import AddPlaceScreen from "./screens/AddPlaceScreen";
-import CreateHuntScreen from "./screens/CreateHuntScreen";
 import EditProfileScreen from "./screens/EditProfileScreen";
 import InviteFriendsScreen from "./screens/InviteFriendsScreen";
-import ConfirmHuntScreen from "./screens/ConfirmHuntScreen";
-
+import MapScreen from "./screens/MapScreen";
+import CreateHuntScreen from "./screens/CreateHuntScreen";
 import AuthContextProvider, { AuthContext } from "./store/AuthContext";
 import UserContextProvider from "./store/UserContext";
-import { initializeDBAsync, initializeImagesDBAsync } from "./util/database";
-import HuntContextProvider, { HuntContext } from "./store/HuntContext";
-import { FriendsContextProvider } from "./store/FriendsContext";
+import ConfirmHuntScreen from "./screens/ConfirmHuntScreen";
 import LocationNavigatorScreen from "./screens/LocationNavigatorScreen";
+import { initializeImagesDBAsync } from "./util/database";
+import HuntContextProvider from "./store/HuntContext";
+import { FriendsContextProvider } from "./store/FriendsContext";
 
 const Stack = createNativeStackNavigator();
 
@@ -37,7 +36,6 @@ const AuthenticatedStack = () => {
   useEffect(() => {
     const initDB = async () => {
       try {
-        await initializeDBAsync();
         await initializeImagesDBAsync();
         
       } catch (error) {
@@ -51,7 +49,6 @@ const AuthenticatedStack = () => {
     <Stack.Navigator>
       <Stack.Screen name="Start" component={StartScreen} />
       <Stack.Screen name="Map" component={MapScreen} />
-      <Stack.Screen name="AddPlace" component={AddPlaceScreen} />
       <Stack.Screen name="EditProfile" component={EditProfileScreen} />
       <Stack.Screen name="CreateHunt" component={CreateHuntScreen} />
       <Stack.Screen name="InviteFriends" component={InviteFriendsScreen} />

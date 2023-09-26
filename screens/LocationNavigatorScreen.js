@@ -1,30 +1,33 @@
-import React, { useEffect, useState,useContext } from "react";
+
+
+import React, { useEffect, useState, useContext } from "react";
 import { View, Button, Alert } from "react-native";
-import MapView, { Marker, Polyline } from "react-native-maps";
+import * as http from "./../util/http";
 import * as Location from "expo-location";
-import { fetchRouteDirections } from "../util/location";
 import { useNavigation } from "@react-navigation/native";
-import * as http from "./../util/http"
+
+
+
 import { HuntContext } from "../store/HuntContext";
 import { UserContext } from "../store/UserContext";
-import NotificationPopup from "../components/ui/NotificationPopup";
+import { fetchRouteDirections } from "../util/location";
 
-const LocationNavigatorScreen = ({ route }) =>
-{
+import Popup from "../components/ui/Popup";
+import MapView, { Marker, Polyline } from "react-native-maps";
+
+const LocalNavigatorScreen = ({ route }) => {
   const navigation = useNavigation();
   const { details } = route.params;
-  // console.log("check", details);
   const [userLocation, setUserLocation] = useState(null);
   const [selectedDestination, setSelectedDestination] = useState(null);
-  const [ routeCoordinates, setRouteCoordinates ] = useState([]);
-  const [ isNotificationPopupVisible, setNotificationPopupVisible ] = useState(false);
-  const [ notificationPopupStage, setnotificationPopupStage ] = useState(1);
+  const [routeCoordinates, setRouteCoordinates] = useState([]);
+  const [isPopupVisible, setPopupVisible] = useState(false);
+  const [ popupStage, setPopupStage ] = useState(1);
+  const [isCameraVisible, setIsCameraVisible] = useState(false);
 
   const { completeHunt } = useContext(HuntContext);
 
   const { currentUser } = useContext(UserContext);
-
-
 
   const destination = {
     name: details.name,
@@ -51,16 +54,15 @@ const LocationNavigatorScreen = ({ route }) =>
 
     getUserLocation();
   }, []);
-  
-  const toRad = (value) =>
-  {
+
+  const toRad = (value) => {
     return (value * Math.PI) / 180;
   };
 
   const isUserNearDestination = (
     userLocation,
     destinationLocation,
-    thresholdInMeters = 50
+    thresholdInMeters = 5000
   ) => {
     const R = 6371000;
     const dLat = toRad(destinationLocation.latitude - userLocation.latitude);
@@ -79,41 +81,40 @@ const LocationNavigatorScreen = ({ route }) =>
 
     return distance <= thresholdInMeters;
   };
- const handleDestinationClick = async () => {
+
+  const handleDestinationClick = async () => {
     try {
       const coordinates = await fetchRouteDirections(
         userLocation,
         destination.coordinate
-        
       );
-      // console.log("see", coordinates);
 
       setSelectedDestination(destination);
       setRouteCoordinates(coordinates);
 
       if (isUserNearDestination(userLocation, destination.coordinate)) {
-        setnotificationPopupStage(1);
-        setNotificationPopupVisible(true);
+        setPopupStage(1);
+        setPopupVisible(true);
       }
-
     } catch (error) {
       console.error("Failed to fetch route:", error);
     }
   };
-  const handleConfirm = async () =>
-  {
-    if (notificationPopupStage === 1)
-    {
-      setnotificationPopupStage(2);
-    }
-    else
-    {
-      setNotificationPopupVisible(false);
-      setnotificationPopupStage(1);
+
+  const handleConfirm = async () => {
+    if (popupStage === 1) {
+      setPopupStage(2);
+      setIsCameraVisible(true);
+    } else {
+      setPopupVisible(false);
+      setPopupStage(1);
+
       const huntId = details.id;
       const userId = currentUser.id;
+
       await http.completeHunt(huntId, userId);
-      navigation.navigate('start');
+
+      navigation.navigate("Start");
     }
   };
 
@@ -127,6 +128,7 @@ const LocationNavigatorScreen = ({ route }) =>
 
   return (
     <View style={{ flex: 1 }}>
+      
       <MapView
         style={{ flex: 1 }}
         initialRegion={{
@@ -136,7 +138,9 @@ const LocationNavigatorScreen = ({ route }) =>
           longitudeDelta: 0.0421,
         }}
       >
-        <Marker coordinate={userLocation} title="You are here"
+        <Marker
+          coordinate={userLocation}
+          title="You are here"
           pinColor="blue"
         />
         <Marker
@@ -148,18 +152,18 @@ const LocationNavigatorScreen = ({ route }) =>
           <Polyline coordinates={routeCoordinates} />
         )}
       </MapView>
-      <NotificationPopup
-        isVisible={isNotificationPopupVisible}
-        header={notificationPopupStage === 1 ? "Take a Photo" : "Final Step"}
+      <Popup
+        isVisible={isPopupVisible}
+        header={popupStage === 1 ? "Take a Photo" : "Final Step"}
         text={
-          notificationPopupStage === 1
+          popupStage === 1
             ? "Walk to the area where the hunt was described."
             : "Nice! Have you been taking the photo?"
         }
-        answer={notificationPopupStage === 1 ? "Ok, I'm here" : "Yes"}
+        answer={popupStage === 1 ? "Ok, I'm here" : "Yes"}
         onClose={() => {
-          setNotificationPopupVisible(false);
-          setnotificationPopupStage(1);
+          setPopupVisible(false);
+          setPopupStage(1);
         }}
         onConfirm={handleConfirm}
       />
@@ -167,5 +171,4 @@ const LocationNavigatorScreen = ({ route }) =>
   );
 };
 
-export default LocationNavigatorScreen;
-
+export default LocalNavigatorScreen;

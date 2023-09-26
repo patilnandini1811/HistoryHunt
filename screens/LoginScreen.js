@@ -4,9 +4,6 @@ import { AuthContext } from "../store/AuthContext";
 import LoadingOverlay from "../components/ui/LoadingOverlay";
 import AuthContent from "../components/Auth/AuthContent";
 import * as http from "../util/http";
-
-
-
 const LoginScreen = () => {
   const [isAuthenticating, setIsAuthenticating] = useState(false);
   const authCtx = useContext(AuthContext)
@@ -23,8 +20,7 @@ const LoginScreen = () => {
       console.log(JSON.stringify(error))
       alert("Wrong email or password")
       
-   
-    }
+   }
    
     setIsAuthenticating(false);
   }
@@ -34,7 +30,6 @@ const LoginScreen = () => {
 
   return <AuthContent isLogin onAuthenticate={authenticationHandler} />
       
-  
 };
 
 

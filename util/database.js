@@ -57,7 +57,7 @@ export const getImageUriFromDatabase = () => {
   });
   return promise;
 };
-// save image 
+
 export const updateImageAsync = (id, newImageUri) => {
   const promise = new Promise((resolve, reject) => {
     db.transaction((tx) => {
