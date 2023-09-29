@@ -1,5 +1,3 @@
-
-
 import MapView, { Marker } from "react-native-maps";
 import { Alert, View, StyleSheet } from "react-native";
 import { useLayoutEffect, useState, useEffect, useCallback } from "react";

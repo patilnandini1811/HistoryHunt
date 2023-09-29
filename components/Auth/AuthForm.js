@@ -14,6 +14,21 @@ const AuthForm = ({ credentialsInvalid, isLogin, onSubmit }) => {
     password: passwordIsInvalid,
     displayName: displayNameIsInvalid,
   } = credentialsInvalid;
+  const updateInputValuHandler = (inputType, enteredValue) =>
+  {
+    switch (inputType)
+    {
+      case 'email':
+        setEnteredEmail(enteredValue);
+        break;
+      case 'name':
+        setEnteredName(enteredValue);
+        break;
+      case 'password':
+        setEnteredPassword(enteredValue);
+        break
+    }
+  };
    const submitHandler = () => {
     onSubmit({
       email: enteredEmail,

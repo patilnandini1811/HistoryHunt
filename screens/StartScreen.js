@@ -38,7 +38,7 @@ const StartScreen = ({ navigation }) => {
   return (
     <View style={styles.rootContainer}>
       <ProfileImage images={images} />
-      {/* <AuthName /> */}
+      
       <GetHunt />
       <View>
         <Pressable onPress={() => navigation.navigate("CreateHunt")}>

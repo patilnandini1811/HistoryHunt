@@ -14,8 +14,8 @@ const ProfileImage = ({ images }) => {
     <View style={styles.container}>
       <View style={styles.imageContainer}>
         <Image
-           source={images ? { uri: images } : defaultImage}
-          // source={defaultImage}
+          //  source={images ? { uri: images } : defaultImage}
+           source={defaultImage}
 
           defaultSource={defaultImage}
           style={styles.profileImage}

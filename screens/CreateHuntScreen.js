@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
     position: 'absolute', 
     top: '50%', 
     left: '50%', 
-    transform: [{translateX: '-50%'}, {translateY: '-50%'}], // Add this
+    transform: [{translateX: '-50%'}, {translateY: '-50%'}], 
     zIndex: 10, 
     backgroundColor: 'rgba(0,0,0,0.8)',
     padding: 10,

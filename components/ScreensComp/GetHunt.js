@@ -1,5 +1,3 @@
-
-
 import { View, Text, FlatList, StyleSheet, Pressable } from "react-native";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../store/UserContext";
