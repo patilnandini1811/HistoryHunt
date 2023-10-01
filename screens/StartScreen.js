@@ -54,13 +54,14 @@ const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
     padding: 30,
+    backgroundColor:'#f8d7fd',
   },
   title: {
     fontSize: 15,
     fontWeight: "bold",
     marginBottom: 8,
     marginTop: 30,
-    color: "#9c21df",
+    color: "black",
   },
   createHunt: {
     fontSize: 16,

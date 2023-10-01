@@ -1,9 +1,8 @@
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet } from "react-native";
 import {
   useState,
   useContext,
   useCallback,
-  useLayoutEffect,
   useEffect,
 } from "react";
 
@@ -14,7 +13,7 @@ import LocationPicker from "../components/places/LocationPicker";
 import { FriendsContext } from "../store/FriendsContext";
 import { HuntContext } from "../store/HuntContext";
 import { UserContext } from "../store/UserContext";
-import IconButton from "../components/ui/IconButton";
+
 
 const CreateHuntScreen = ({ navigation }) => {
   const [enteredHuntTime, setEnteredHuntTime] = useState("");
@@ -24,7 +23,7 @@ const CreateHuntScreen = ({ navigation }) => {
   const { addHunt } = useContext(HuntContext);
   const { selectedFriends } = useContext(FriendsContext);
   const userCtx = useContext(UserContext);
-  // const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  
 
 
   useEffect(() => {
@@ -68,47 +67,29 @@ const CreateHuntScreen = ({ navigation }) => {
       setEnteredHuntName("");
       navigation.navigate("Start");
       
-      // setShowSuccessMessage(true);
       
-      // setTimeout(() =>
-      // {
-      //   setShowSuccessMessage(false);
-      // }, 5000);
     } catch (error) {
       console.error("Failed to create the hunt", error);
     }
   };
 
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerRight: () => (
-        <IconButton
-          icon="person-add"
-          size={40}
-          onPress={() => navigation.navigate("InviteFriends")}
-        />
-      ),
-    });
-  }, [navigation]);
+  
 
   return (
     <View style={styles.mainContainer}>
       
       <View style={styles.container}>
-        {/* {showSuccessMessage && (
-          <View style={styles.successMessageContainer}>
-            <Text style={styles.successMessage}>Hunt created!</Text>
-          </View>)} */}
         
-        <Title title={"Customize"} />
+        
+        <Title title={"Personalize"} />
 
         <Input
-          placeholder="3 hours? 2days? you pick"
+          placeholder="5 hours? 2days? you pick"
           value={enteredHuntTime}
           onUpdateValue={(value) =>
             updateCreateInputValueHandler("hunt-time", value)
           }
-          label="How long should it be?"
+          label="How much time are you allotting?"
         />
         <Input
           placeholder="Name"
@@ -116,15 +97,9 @@ const CreateHuntScreen = ({ navigation }) => {
           onUpdateValue={(value) =>
             updateCreateInputValueHandler("hunt-name", value)
           }
-          label="What do you want to call your hunt?"
+          label="What's the name of your hunt?"
         />
-        <View style={styles.selectedFriends}>
-  {selectedFriends.map((friend, index) => (
-    <View key={index} style={styles.friendContainer}>
-      <Text style={styles.text}>{friend.name}</Text>
-    </View>
-  ))}
-</View>
+        
 
       </View>
       <LocationPicker locationHandler={locationHandler} />
@@ -141,34 +116,28 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     justifyConten: "space-between",
-    backgroundColor:'white'
+    
+    backgroundColor:'#f8d7fd',
   },
   container: {
     alignItems: "center",
     padding: 20,
     backgroundColor: "skyblue",
     borderColor: 'blue',
-    borderWidth: 3,
-    borderRadius: 40, 
+    borderWidth: 2,
+   marginLeft:20,
     shadowColor: "black", 
     shadowOffset: { width: 0, height: 2 }, 
     shadowOpacity: 0.3, 
     shadowRadius: 4,
     elevation: 5, 
     marginTop: 20,
+    width: 280,
+    height:320
     
     
   },
-  selectedFriends: {
-    flexDirection: "row", 
-    flexWrap: "wrap", 
-    alignItems: "center", 
-    justifyContent: "center", 
-    padding: 10,
-  },
-  friendContainer: {
-    margin: 5, 
-  },
+  
   text: {
     color: "#9c21df",
     fontSize: 30,
@@ -178,7 +147,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 50,
     marginRight: 70,
-    marginTop:30,
+    marginTop:40,
   },
   successMessageContainer: {
     position: 'absolute', 

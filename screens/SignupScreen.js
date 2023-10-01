@@ -23,7 +23,7 @@ const SignupScreen = () => {
       userCtx.addUser(displayName, localId);
 
     } catch (error) {
-      console.log("singUp error :", error)
+      // console.log("singUp error :", error)
       alert("Wrong Credentials")
     }
     setIsAuthenticating(false);

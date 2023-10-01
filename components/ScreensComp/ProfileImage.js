@@ -14,8 +14,9 @@ const ProfileImage = ({ images }) => {
     <View style={styles.container}>
       <View style={styles.imageContainer}>
         <Image
-          //  source={images ? { uri: images } : defaultImage}
+            // source={images ? { uri: images } : defaultImage}
            source={defaultImage}
+
 
           defaultSource={defaultImage}
           style={styles.profileImage}
@@ -36,12 +37,14 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     flexDirection: "row",
-    paddingLeft: 50,
+    paddingRight: 50,
+   
   },
   profileImage: {
     width: 250,
     height: 250,
-    borderRadius: 100,
+   borderWidth: 2,          // Set border width
+    borderColor: 'blue',
   },
 });
 

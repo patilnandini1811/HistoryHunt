@@ -2,14 +2,13 @@ import { View, Text, FlatList, StyleSheet, Pressable } from "react-native";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../store/UserContext";
 import { HuntContext } from "../../store/HuntContext";
-
 import { useNavigation } from "@react-navigation/native";
 
 
 
 const GetHunt = () => {
   const [activeHunts, setActiveHunts] = useState([]);
-  const [plannedHunts, setPlannedHunts] = useState([]);
+  
   const [medalHunts, setMedalHunts] = useState([]);
   const navigation = useNavigation();
   const userCtx = useContext(UserContext);
@@ -28,14 +27,7 @@ const GetHunt = () => {
           hunt.creator?.id === currentUser && hunt.creator?.status === "Active"
       );
 
-      const planned = huntCtx.hunts.filter(
-        (hunt) =>
-          hunt.creator?.id !== currentUser &&
-          hunt.invitees?.some(
-            (invitee) =>
-              invitee.id === currentUser && invitee.status === "Planned"
-          )
-      );
+      
       const medal = huntCtx.hunts.filter(
         (hunt) =>
           (hunt.creator?.id === currentUser &&
@@ -46,7 +38,7 @@ const GetHunt = () => {
           )
       );
       setActiveHunts(active);
-      setPlannedHunts(planned);
+      
       setMedalHunts(medal);
     }
   }, [huntCtx.hunts]);
@@ -76,14 +68,8 @@ const GetHunt = () => {
           renderItem={renderItem}
         />
       </View>
-      <View>
-        <Text style={styles.title}>Planned Hunts</Text>
-        <FlatList
-          data={plannedHunts}
-          keyExtractor={(item) => item.id}
-          renderItem={renderItem}
-        />
-      </View>
+      {/* 
+       */}
       <View>
         <Text style={styles.title}>Medal</Text>
         <FlatList

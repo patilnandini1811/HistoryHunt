@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-// import { uploadImageToFirebase } from "../util/firebaseStorage";
+
 
 export const AuthContext = createContext({
   token: "",

@@ -37,9 +37,10 @@ const AuthName = () => {
 const styles = StyleSheet.create({
   title: {
     fontSize: 35,
-    padding: 10,
-    textAlign: "center",
-    color: 'blue',
+     padding: 10,
+    textAlign: "left",
+     marginRight:230,
+    color: 'black',
   },
 });
 

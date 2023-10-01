@@ -3,13 +3,10 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useContext, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
-
 import LoginScreen from "./screens/LoginScreen";
 import SignupScreen from "./screens/SignupScreen";
 import StartScreen from "./screens/StartScreen";
 import EditProfileScreen from "./screens/EditProfileScreen";
-import InviteFriendsScreen from "./screens/InviteFriendsScreen";
 import MapScreen from "./screens/MapScreen";
 import CreateHuntScreen from "./screens/CreateHuntScreen";
 import AuthContextProvider, { AuthContext } from "./store/AuthContext";
@@ -51,7 +48,6 @@ const AuthenticatedStack = () => {
       <Stack.Screen name="Map" component={MapScreen} />
       <Stack.Screen name="EditProfile" component={EditProfileScreen} />
       <Stack.Screen name="CreateHunt" component={CreateHuntScreen} />
-      <Stack.Screen name="InviteFriends" component={InviteFriendsScreen} />
       <Stack.Screen name="ConfirmHunt" component={ConfirmHuntScreen} />
       <Stack.Screen name="LocationNavigator" component={LocationNavigatorScreen} />
     </Stack.Navigator>

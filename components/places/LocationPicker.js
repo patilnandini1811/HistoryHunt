@@ -48,7 +48,7 @@ const LocationPicker = ({ locationHandler }) => {
       <View style={styles.preview}>{previewContent}</View>
       <View style={styles.buttonContainer}>
         <OutlinedButton icon="map" pressHandler={pickOnMapHandler}>
-          Choose you location
+          Choose your location
         </OutlinedButton>
       </View>
     </View>
@@ -58,7 +58,7 @@ const LocationPicker = ({ locationHandler }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 10,
+    paddingTop:-15,
   },
   buttonContainer: {
     paddingTop: 20,
@@ -74,7 +74,9 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   text: {
-    textAlign: "center",
+    textAlign: "left",
+    marginLeft: 20,
+    marginTop:20,
     color:"blue"
   },
 });
